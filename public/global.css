@@ -1,0 +1,31 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #c0c0c0;
+    color: #343434;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+.input-err-msg {
+    font-size: 13px;
+    color: #fc1212;
+    margin-left: 5px;
+    margin-top: -5px;
+}
+
+.input-err {
+    border: 1px solid #fc1212;
+    outline: 2px solid #fc1212;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/user/login.css">
+    <link rel="stylesheet" href="/global.css">
+</head>
+
+<body>
+    <form action="/login" method="post" class="sign-in-form">
+        <h2>Sign In</h2>
+        <input type="text" name="username" placeholder="Enter username">
+        <% if (field==='username' ) { %>
+            <p class="input-err-msg">
+                <%= message %>
+            </p>
+            <% } %>
+                <input type="password" name="password" placeholder="Enter password">
+                <% if (field==='password' ) { %>
+                    <p class="input-err-msg">
+                        <%= message %>
+                    </p>
+                    <% } %>
+                        <button type="submit">Sign In</button>
+                        <a href="/register">Doesn't have an account?</a>
+    </form>
+</body>
+
+</html>

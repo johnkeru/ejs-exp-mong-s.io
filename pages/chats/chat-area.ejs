@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/global.css">
+    <link rel="stylesheet" href="/chat/chat-area.css">
+</head>
+
+<body>
+    <div class="content">
+        <div class="sidebar">
+            <div>
+                <h3>Users</h3>
+                <div class="users">
+                    <% users.forEach(user=> { %>
+                        <a href="/chat-area?yourId=<%=currentUser._id%>&otherId=<%=user._id%>">
+                            <div class="user <%=user._id.toString() === otherUser?._id.toString() ? 'selected' : ''%>">
+                                <h4>
+                                    <%=user.username%>
+                                </h4>
+                            </div>
+                        </a>
+                        <% }) %>
+                </div>
+            </div>
+            <a href="/logout">Logout</a>
+        </div>
+
+        <% if(otherUser) { %>
+            <div class="chat-area">
+                <div class="chat-header">
+                    <h3>
+                        <%= otherUser.username %>
+                    </h3>
+                </div>
+                <div class="chat-content">
+                    <% messages.forEach(message=> { %>
+                        <div data-id="<%=message._id%>"
+                            class="chat <%= message.sender.toString()===currentUser._id.toString() ? 'sender' : 'receiver' %>">
+                            <p>
+                                <%=message.message%>
+                            </p>
+                        </div>
+                        <% }) %>
+                </div>
+                <form class="chat-footer">
+                    <input id="message-input" type="text" placeholder="Send message...">
+                    <button type='submit' id="message-send">Send</button>
+                </form>
+            </div>
+            <% } else { %>
+                <div class="welcome">
+                    <h2>Welcome, <%= currentUser.username%>!
+                    </h2>
+                </div>
+                <% } %>
+    </div>
+</body>
+<script type="importmap">
+  {
+    "imports": {
+      "socket.io-client": "https://cdn.socket.io/4.7.5/socket.io.esm.min.js"
+    }
+  }
+</script>
+
+<script type="module" src="/js/chat-area.js">
+</script>
+
+</html>
