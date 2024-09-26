@@ -35,4 +35,12 @@ userSchema.methods.comparePassword = function (password) {
     }
 }
 
+// blogSchema.virtual('likesCount', {
+//   ref: 'User', // Reference to the Post model
+//   localField: '_id',
+//   foreignField: 'likes',
+//   count: true // This tells mongoose to return a count instead of the documents
+// });
+
+
 module.exports = mongoose.model('User', userSchema)
